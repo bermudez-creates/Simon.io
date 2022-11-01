@@ -46,7 +46,7 @@ function checkAnswer(currentLevel) {
       }
     } else {  //if wrong do this...
       $("body").addClass("game-over");
-      playSound(wrong);
+       wrongSound();
       setTimeout(function () {
         $("body").removeClass("game-over");
       }, 200);
@@ -68,6 +68,11 @@ function checkAnswer(currentLevel) {
 function playSound(name) {                       //how we get the corresponding sound to the color chosen/picked                         //should play sound on random/chosen sequence
     var audio = new Audio("sounds/" + name + ".mp3");
     audio.play();
+}
+
+function wrongSound() {
+  var wrong = new Audio("sounds/wrong.mp3");
+  wrong.play();
 }
 
 function animatePress(currentColor) {
