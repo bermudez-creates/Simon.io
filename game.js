@@ -77,7 +77,7 @@ function animatePress(currentColor) {
 
   
   function gameOver () {  //resets game 
-    $("#level-title").text("Game Over! Press any key to start again!");
+    $("#level-title").text("Game Over! Press any key to restart!");
    
     level = 0;
     gamePattern = [];
