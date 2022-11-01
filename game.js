@@ -13,6 +13,23 @@ $(document).keypress(function() {  //wait for key press to start/restart
     }
 });
 
+function nextSequence() {    //creates random number/chooses from color array
+    playerMoves = [];  
+    level++;   
+    $("#level-title").text("Level " + level);                     //random sequence
+    var randomNumber = Math.floor(Math.random() * 4); 
+    var randomChosenColor = buttonColors[randomNumber]; //return a string color value
+   
+     gamePattern.push(randomChosenColor); // how random number picks from array
+     
+    
+
+    $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100); //passes in string color/picks a button to animate from html
+     playSound(randomChosenColor);
+     animatePress(randomChosenColor);
+}
+
+
 
 $(".btn").click(function() {  
  //captures player clicks
@@ -24,18 +41,6 @@ $(".btn").click(function() {
     
 });
 
-function nextSequence() {    //creates random number/chooses from color array
-    playerMoves = [];  
-    level++;   
-    $("#level-title").text("Level " + level);                     //random sequence
-    var randomNumber = Math.floor(Math.random() * 4); 
-    var randomChosenColor = buttonColors[randomNumber]; //return a string color value
-    gamePattern.push(randomChosenColor); // how random number picks from array
-    $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100); //passes in string color/picks a button to animate from html
-    playSound(randomChosenColor);
-    animatePress(randomChosenColor);
-}
-
 
 function checkAnswer(currentLevel) {
     if (gamePattern[currentLevel] === playerMoves[currentLevel]) { //1. checks if random pattern = player pattern after start
@@ -46,20 +51,13 @@ function checkAnswer(currentLevel) {
       }
     } else {  //if wrong do this...
       $("body").addClass("game-over");
-       wrongSound();
+      wrongSound();
       setTimeout(function () {
         $("body").removeClass("game-over");
       }, 200);
       gameOver();
     }
 }
-  function gameOver () {  //resets game 
-    $("#level-title").text("Game Over! Press any key to restart!");
-   
-    level = 0;
-    gamePattern = [];
-    start = false;
-  }
 
 //we set these functions to call on behavior on the fly 
 //how do we make the right sound+animation play when a certain number
@@ -83,8 +81,13 @@ function animatePress(currentColor) {
   }
 
   
-
-
+  function gameOver () {  //resets game 
+    $("#level-title").text("Game Over! Press any key to start again!");
+   
+    level = 0;
+    gamePattern = [];
+    start = false;
+  }
   
 
 
