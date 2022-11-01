@@ -42,21 +42,21 @@ $(".btn").click(function() {
 });
 
 
-function checkAnswer(currentLevel) {
-    if (gamePattern[currentLevel] === playerMoves[currentLevel]) { //1. checks if random pattern = player pattern after start
-      if (playerMoves.length === gamePattern.length){  //2. if pattern is chosen correctly do this...
-        setTimeout(function () {
-          nextSequence();
-        }, 1000);
-      }
-    } else {  //if wrong do this...
-      $("body").addClass("game-over");
-      wrongSound();
-      setTimeout(function () {
-        $("body").removeClass("game-over");
-      }, 200);
-      gameOver();
-    }
+// function checkAnswer(currentLevel) {
+//     if (gamePattern[currentLevel] === playerMoves[currentLevel]) { //1. checks if random pattern = player pattern after start
+//       if (playerMoves.length === gamePattern.length){  //2. if pattern is chosen correctly do this...
+//         setTimeout(function () {
+//           nextSequence();
+//         }, 1000);
+//       }
+//     } else {  //if wrong do this...
+//       $("body").addClass("game-over");
+//       wrongSound();
+//       setTimeout(function () {
+//         $("body").removeClass("game-over");
+//       }, 200);
+//       gameOver();
+//     }
 }
 
 //we set these functions to call on behavior on the fly 
